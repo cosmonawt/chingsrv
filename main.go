@@ -19,6 +19,8 @@ func main() {
 	if err != nil {
 		log.Fatal("Error opening file")
 	}
+	defer f.Close()
+	
 	s, format, _ := wav.Decode(f)
 	speaker.Init(format.SampleRate, format.SampleRate.N(time.Second/10))
 
